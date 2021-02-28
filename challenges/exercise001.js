@@ -8,7 +8,9 @@ function capitalize(word) {
 function generateInitials(firstName, lastName) {
   if (firstName === undefined) throw new Error("firstName is required");
   if (lastName === undefined) throw new Error("lastName is required");
-  // Add your code here!
+
+  // isolate first character from each word, separate them with "." and return
+  return firstName[0] + "." + lastName[0];
 }
 
 function addVAT(originalPrice, vatRate) {
