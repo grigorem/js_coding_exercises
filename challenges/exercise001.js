@@ -14,9 +14,14 @@ function generateInitials(firstName, lastName) {
 }
 
 function addVAT(originalPrice, vatRate) {
-  if (originalPrice === undefined) throw new Error("originalPrice is requied");
+  if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (vatRate === undefined) throw new Error("vatRate is required");
-  // Add your code here!
+
+  // calculate the price with the VAT added to it
+  let priceWithVat = originalPrice + originalPrice * (vatRate / 100);
+
+  // return the price with VAT rounded to two decimals
+  return Math.round(priceWithVat * 100) / 100;
 }
 
 function getSalePrice(originalPrice, reduction) {
