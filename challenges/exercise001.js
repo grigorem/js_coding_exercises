@@ -66,7 +66,9 @@ function reverseAllWords(words) {
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  // Add your code here!
+
+  // use a lambda function to filter the "Linux" users and return their count
+  return users.filter((obj) => obj.type === "Linux").length;
 }
 
 function getMeanScore(scores) {
