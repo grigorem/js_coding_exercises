@@ -80,7 +80,27 @@ function getMeanScore(scores) {
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
-  // Add your code here!
+
+  // initialize an empty response
+  let response = "";
+
+  // check if divides by 3
+  if (n % 3 === 0) {
+    response += "fizz";
+  }
+
+  // check if divides by 5
+  if (n % 5 === 0) {
+    response += "buzz";
+  }
+
+  // check if is not divisible
+  if (response === "") {
+    response = n;
+  }
+
+  // return the response
+  return response
 }
 
 module.exports = {
