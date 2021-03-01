@@ -86,7 +86,24 @@ const findNeedle = (haystack, searchTerm) => {
 
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+
+  // declare the empty output class
+  let freq = {};
+
+  // use a regular expression to isolate words from sentences
+  let words = str.toLowerCase().match(/[a-z]+(?:-[a-z]+)?/g)
+
+  // use forEach function to iterate over each match found and count it
+  words.forEach((word) => {
+    if (word in freq) {
+      freq[word]++;
+    } else {
+      freq[word] = 1;
+    }
+  });
+
+  // return the created class
+  return freq;
 };
 
 module.exports = {
