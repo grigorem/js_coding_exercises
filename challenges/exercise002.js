@@ -21,7 +21,9 @@ function getBusNumbers(people) {
 
 function countSheep(arr) {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+
+  // user filter function and lambda functions to count the sheep
+  return arr.filter((elem) => elem === "sheep").length;
 }
 
 function hasMPostCode(person) {
