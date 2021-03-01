@@ -1,7 +1,16 @@
 const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
-  // Your code here!
+
+  // get the index of the number in the numbers array
+  let index = nums.findIndex((num) => num === n);
+
+  // if the number is not found or is the last one, return null; return the next number otherwise
+  if (index === -1 || index === nums.length - 1) {
+    return null
+  } else {
+    return nums[index + 1];
+  }
 };
 
 const count1sand0s = str => {
