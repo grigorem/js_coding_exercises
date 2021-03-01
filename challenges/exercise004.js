@@ -29,7 +29,9 @@ function getIntegers(nums) {
 
 function getCities(users) {
   if (!users) throw new Error("users is required");
-  // Your code here
+
+  // use the map function and a lambda expression to return the cities
+  return users.map((user) => user.data.city.displayName);
 }
 
 function getSquareRoots(nums) {
