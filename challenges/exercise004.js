@@ -15,7 +15,9 @@ function findNamesBeginningWith(names, char) {
 
 function findVerbs(words) {
   if (!words) throw new Error("words is required");
-  // Your code here
+
+  // use a filter and a lambda expression to filter the strings starting with "to "
+  return words.filter((word) => word.startsWith("to "));
 }
 
 function getIntegers(nums) {
