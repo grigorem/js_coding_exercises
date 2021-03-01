@@ -43,7 +43,12 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  // Your code here!
+
+  // declare the sum lambda expression as a variable
+  let sumFunc = (a, b) => a + b;
+
+  // return the sum of the sum of the arrays
+  return arrs.map((arr) => arr.reduce(sumFunc)).reduce(sumFunc);
 };
 
 const arrShift = arr => {
