@@ -22,7 +22,9 @@ function findVerbs(words) {
 
 function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+
+  // use a filter and a lambda expression to get the integers from the array
+  return nums.filter((num) => num % 1 === 0);
 }
 
 function getCities(users) {
