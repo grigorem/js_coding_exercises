@@ -73,7 +73,9 @@ function countLinuxUsers(users) {
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
-  // Add your code here!
+
+  // use "reduce" function to compute the sum of the array, and after that make the average
+  return Math.round((scores.reduce((total, num) => total + num) / scores.length) * 100) / 100;
 }
 
 function simpleFizzBuzz(n) {
