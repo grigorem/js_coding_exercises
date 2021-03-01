@@ -51,7 +51,9 @@ function findSentencesContaining(sentences, str) {
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  // Your code here
+
+  // use the map function and a lambda expression to get the max of each unpacked triangle
+  return triangles.map((triangle) => Math.max(...triangle));
 }
 
 module.exports = {
