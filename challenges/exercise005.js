@@ -15,7 +15,15 @@ const findNextNumber = (nums, n) => {
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+
+  // split the string in an characters array
+  let chars = str.split('');
+
+  // return the object with the 1 and 0 count (using filter and lambda expression)
+  return {
+    1: chars.filter((char) => char === '1').length,
+    0: chars.filter((char) => char === '0').length
+  }
 };
 
 const reverseNumber = n => {
