@@ -8,7 +8,9 @@ function findSmallNums(nums) {
 function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
-  // Your code here
+
+  // use a filter and a lambda expression to get the names that start with char
+  return names.filter((name) => name[0] === char);
 }
 
 function findVerbs(words) {
