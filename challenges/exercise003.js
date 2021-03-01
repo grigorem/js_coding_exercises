@@ -24,7 +24,14 @@ function camelCaseWords(words) {
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
-  // Your code here!
+
+  // initiate the total with "0"
+  let total = 0;
+
+  // use the "forEach" function and a lambda function to count all the subjects
+  people.forEach((person) => total += person.subjects.length);
+
+  return total;
 }
 
 function checkIngredients(menu, ingredient) {
