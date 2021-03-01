@@ -28,7 +28,17 @@ const count1sand0s = str => {
 
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
-  // Your code here!
+
+  // initialize a variable for the output
+  let reversedN = 0;
+
+  // iterate over each digit of "n" and form the other number
+  while (n > 0) {
+    reversedN = reversedN * 10 + n % 10;
+    n = Math.floor(n / 10);
+  }
+
+  return reversedN;
 };
 
 const sumArrays = arrs => {
