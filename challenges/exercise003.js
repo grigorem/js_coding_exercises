@@ -1,6 +1,11 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
-  // Your code here!
+
+  // iterate over each number and compute its square
+  for (let i = 0; i < nums.length; i++) {
+    nums[i] = Math.pow(nums[i],2);
+  }
+  return nums;
 }
 
 function camelCaseWords(words) {
