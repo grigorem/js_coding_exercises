@@ -53,7 +53,16 @@ const sumArrays = arrs => {
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+
+  // make the swap if the length of the array is more or equal with 2
+  if (arr.length >= 2) {
+    let aux = arr[0];
+    arr[0] = arr[arr.length - 1];
+    arr[arr.length - 1] = aux;
+  }
+
+  // return modified/unmodified array
+  return arr;
 };
 
 const findNeedle = (haystack, searchTerm) => {
