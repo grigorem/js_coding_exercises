@@ -99,6 +99,18 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+
+  // applied naive approach with two FORs to form the matrix
+  let out = [];
+  for (let i = 0; i < n; i++) {
+    let line = [];
+    for (let j = 0; j < n; j++) {
+      line[j] = fill;
+    }
+    out[i] = line;
+  }
+
+  return out;
 };
 
 /**

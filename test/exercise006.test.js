@@ -60,3 +60,18 @@ describe("isItPrime", () => {
     expect(isItPrime(-1)).toBe(false);
   });
 });
+
+describe("createMatrix", () => {
+  test("test for normal case", () => {
+    let exp = [
+        ["foo", "foo", "foo"],
+        ["foo", "foo", "foo"],
+        ["foo", "foo", "foo"]
+     ];
+    expect(createMatrix(3, "foo")).toStrictEqual(exp);
+  });
+
+  test("test for special cases", () => {
+    expect(createMatrix(0, "lol")).toStrictEqual([]);
+  });
+});
