@@ -75,3 +75,23 @@ describe("createMatrix", () => {
     expect(createMatrix(0, "lol")).toStrictEqual([]);
   });
 });
+
+describe("areWeCovered", () => {
+  test("test for normal case", () => {
+    let staff =  [
+        { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+        { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+        { name: "Michael", rota: ["Tuesday", "Wednesday"] },
+        { name: "Alan", rota: ["Saturday", "Sunday", ] },
+        { name: "Tara", rota: ["Tuesday", "Saturday"] }
+  ];
+    expect(areWeCovered(staff, "Tuesday")).toBe(true);
+    expect(areWeCovered(staff, "Monday")).toBe(false);
+    expect(areWeCovered(staff, "Thursday")).toBe(false);
+    expect(areWeCovered(staff, "Saturday")).toBe(true);
+  });
+
+  test("test for special cases", () => {
+    expect(areWeCovered([], "Monday")).toStrictEqual(false);
+  });
+});
