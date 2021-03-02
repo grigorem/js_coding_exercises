@@ -38,6 +38,17 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+
+  // split the string in an array of characters
+  let dnas = str.toLowerCase().split("");
+
+  // use the map function and "translate" each character in its complementary
+  return dnas.map((dna) => {
+    if (dna === "a") return "T";
+    if (dna === "t") return "A";
+    if (dna === "c") return "G";
+    if (dna === "g") return "C";
+  }).join("");
 };
 
 /**

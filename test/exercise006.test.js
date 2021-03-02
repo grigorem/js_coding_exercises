@@ -30,3 +30,15 @@ describe("isValidDNA", () => {
     expect(isValidDNA("BDEMFR")).toBe(false);
   });
 });
+
+describe("getComplementaryDNA", () => {
+  test("test for normal case", () => {
+    expect(getComplementaryDNA("CGTAATGC")).toBe("GCATTACG");
+    expect(getComplementaryDNA("ACTG")).toBe("TGAC");
+  });
+
+  test("test for special cases", () => {
+    expect(getComplementaryDNA("")).toBe("");
+    expect(getComplementaryDNA("cTGAt")).toBe("GACTA");
+  });
+});
