@@ -18,3 +18,15 @@ describe("sumMultiples", () => {
     expect(sumMultiples([])).toBe(0);
   });
 });
+
+describe("isValidDNA", () => {
+  test("returns true and false for two strings", () => {
+    expect(isValidDNA("CGTAATGC")).toBe(true);
+    expect(isValidDNA("TAATGCB")).toBe(false);
+  });
+
+  test("test for special cases", () => {
+    expect(isValidDNA("")).toBe(true);
+    expect(isValidDNA("BDEMFR")).toBe(false);
+  });
+});

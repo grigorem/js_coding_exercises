@@ -26,6 +26,9 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
+
+  // use a regular expression to match the DNA characters
+  return /^[cgta]*$/gi.test(str);
 };
 
 /**
