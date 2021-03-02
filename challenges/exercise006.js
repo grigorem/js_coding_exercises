@@ -58,6 +58,31 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+
+  /* Implement 6k + 1 method to validate a prime number - algorithm from Wikipedia */
+
+  // special cases
+  if (n === 2 || n === 3) {
+    return true;
+  }
+  if (n <= 1) {
+    return false;
+  }
+
+  // eliminate most of the options
+  if (n % 2 === 0 || n % 3 === 0) {
+    return false;
+  }
+
+  // iterate on the rest of the numbers
+  for (let i = 5; i <= Math.sqrt(n); i += 6) {
+    if (n % i === 0 || n % i + 2 === 0) {
+      return false
+    }
+  }
+
+  // that means the number is prime
+  return true;
 };
 
 /**

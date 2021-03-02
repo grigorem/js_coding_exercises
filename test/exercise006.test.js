@@ -42,3 +42,21 @@ describe("getComplementaryDNA", () => {
     expect(getComplementaryDNA("cTGAt")).toBe("GACTA");
   });
 });
+
+describe("isItPrime", () => {
+  test("test for normal case", () => {
+    expect(isItPrime(23)).toBe(true);
+    expect(isItPrime(17)).toBe(true);
+    expect(isItPrime(27)).toBe(false);
+    expect(isItPrime(1721)).toBe(true);
+    expect(isItPrime(123213213247)).toBe(true);
+    expect(isItPrime(123213213248)).toBe(false);
+  });
+
+  test("test for special cases", () => {
+    expect(isItPrime(1)).toBe(false);
+    expect(isItPrime(2)).toBe(true);
+    expect(isItPrime(0)).toBe(false);
+    expect(isItPrime(-1)).toBe(false);
+  });
+});
