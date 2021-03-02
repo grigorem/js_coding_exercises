@@ -129,6 +129,7 @@ const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
 
+  // use a filter to get the people that work the required day
   return staff.filter((person) => person.rota.includes(day)).length >= 3;
 };
 
