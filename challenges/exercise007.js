@@ -118,6 +118,23 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+
+  // use a regular expression to check and extract hex numbers (created two objects because we need the regex twice)
+  let regexValidate = /#([0-9A-F]{2})([0-9A-F]{2})([0-9A-F]{2})/g;
+  let regexExtract = /#([0-9A-F]{2})([0-9A-F]{2})([0-9A-F]{2})/g;
+
+  if (!regexValidate.test(hexStr)) {
+    hexStr = "#000000"; // default black
+  }
+
+  let matches = regexExtract.exec(hexStr);
+
+  let rDec = parseInt(matches["1"], 16); // group "0" is the whole regex match
+  let gDec = parseInt(matches["2"], 16);
+  let bDec = parseInt(matches["3"], 16);
+
+  // return the corresponding RGB format
+  return "rgb(" + rDec + "," + gDec + "," + bDec + ")";
 };
 
 /**

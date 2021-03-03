@@ -67,3 +67,14 @@ describe("getScreentimeAlertList", () => {
     expect(getScreentimeAlertList([], "2019-05-04")).toStrictEqual([]);
   });
 });
+
+describe("hexToRGB", () => {
+  test("test the normal cases", () => {
+    expect(hexToRGB("#FF1133")).toStrictEqual("rgb(255,17,51)");
+    expect(hexToRGB("#FFAA1A")).toStrictEqual("rgb(255,170,26)");
+  });
+
+  test("test weird cases", () => {
+    expect(hexToRGB("Not a HEX code")).toStrictEqual("rgb(0,0,0)");
+  });
+});
