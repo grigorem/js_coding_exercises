@@ -74,11 +74,36 @@ const createRange = (start, end, step) => {
  * The function should return an array of usernames of users who have used more than 100 minutes of screentime for a given date.
  * The date will be provided in the format "2019-05-04" (YYYY-MM-DD)
  * For example, if passed the above users and the date "2019-05-04" the function should return ["beth_1234"] as she used over 100 minutes of screentime on that date.
- * @param {Array} users
+ * @param {Array} users(
  */
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+
+  let alertUsers = [];
+
+  // iterate over each user
+  for (let i = 0; i < users.length; i++) {
+    let user = users[i];
+
+    // check if the user was active on the specified date
+    let index = user.screenTime.findIndex((time) => time.date === date);
+
+    // check the app usage on the selected day
+    if (index >= 0) {
+      let minutes = 0;
+      for (let app in user.screenTime[index].usage) {
+        minutes += user.screenTime[index].usage[app];
+      }
+
+      if (minutes > 100) {
+        alertUsers[alertUsers.length] = user.username;
+      }
+    }
+  }
+
+  // return alerted users
+  return alertUsers;
 };
 
 /**
