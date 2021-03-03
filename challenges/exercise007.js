@@ -4,6 +4,24 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+
+  // doing the sum for negative numbers as well
+  let isNegative = n < 0;
+
+  // use while to break the number in its digits and add them to the sum
+  let sum = 0;
+  while (n !== 0) {
+    sum += n % 10;
+
+    if (isNegative) {
+      n = Math.ceil(n / 10);
+    } else {
+      n = Math.floor(n / 10);
+    }
+  }
+
+  // return the computed sum
+  return sum;
 };
 
 /**
