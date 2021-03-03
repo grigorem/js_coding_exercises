@@ -114,7 +114,7 @@ const getScreentimeAlertList = (users, date) => {
  * This function should transform the hex code into an RGB code in the format:
  * "rgb(255,17,51)"
  * Hint: You will need to convert each hexadecimal value for R, G and B into its decimal equivalent!
- * @param {String} str
+ * @param {String} hexStr
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
@@ -149,6 +149,74 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+
+  // naive approach; use a "frequency" structure
+  let win = {
+    lines: {
+      0: 0,
+      1: 0,
+      2: 0
+    },
+    cols: {
+      0: 0,
+      1: 0,
+      2: 0
+    },
+    diags: {
+      0: 0, // main diagonal
+      1: 0, // secondary diagonal
+      2: 0  // dummy
+    }
+  };
+
+  // iterate over each cell of the board
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+
+      // check if we need to subtract/add one
+      let q = 0;
+      if (board[i][j] === "X") {
+        q = 1;
+      }
+      if (board[i][j] === "0") {
+        q = -1;
+      }
+
+      win.lines[i] += q;
+      win.cols[j] += q;
+
+      // check diagonals
+      if (i === j) { // main diagonal
+        win.diags[0] += q;
+      }
+
+      if ((i === 0 && j === 2) || (i === 2 && j === 0) || (i === 1 && j === 1)) {
+        win.diags[1] += q;
+      }
+    }
+  }
+
+  // check if anyone won (if 3, "X" wins; if -3, "0" wins)
+  for (let i = 0; i < 3; i++) {
+    if (win.lines[i] === 3) {
+      return "X";
+    } else if (win.lines[i] === -3) {
+      return "0";
+    }
+    if (win.cols[i] === 3) {
+      return "X";
+    } else if (win.cols[i] === -3) {
+      return "0";
+    }
+    if (win.diags[i] === 3) {
+      return "X";
+    } else if (win.diags[i] === -3) {
+      return "0";
+    }
+  }
+
+  // default
+  return null;
 };
 
 module.exports = {

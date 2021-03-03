@@ -70,11 +70,81 @@ describe("getScreentimeAlertList", () => {
 
 describe("hexToRGB", () => {
   test("test the normal cases", () => {
-    expect(hexToRGB("#FF1133")).toStrictEqual("rgb(255,17,51)");
-    expect(hexToRGB("#FFAA1A")).toStrictEqual("rgb(255,170,26)");
+    expect(hexToRGB("#FF1133")).toBe("rgb(255,17,51)");
+    expect(hexToRGB("#FFAA1A")).toBe("rgb(255,170,26)");
   });
 
   test("test weird cases", () => {
-    expect(hexToRGB("Not a HEX code")).toStrictEqual("rgb(0,0,0)");
+    expect(hexToRGB("Not a HEX code")).toBe("rgb(0,0,0)");
+  });
+});
+
+describe("findWinner", () => {
+  test("columns test", () => {
+    let board = [
+      ["X", "0", null],
+      ["X", null, "0"],
+      ["X", null, "0"]
+    ];
+    expect(findWinner(board)).toBe("X");
+
+    board = [
+      ["X", "0", "0"],
+      [null, "0", null],
+      ["X", "0", "X" ]
+    ];
+    expect(findWinner(board)).toBe("0");
+  });
+
+  test("lines test", () => {
+    let board = [
+      ["X", "0", null],
+      ["0", null, "0"],
+      ["X", "X", "X"]
+    ];
+    expect(findWinner(board)).toBe("X");
+
+    board = [
+      ["0", "0", "0"],
+      [null, "X", null],
+      ["X", "X", null ]
+    ];
+    expect(findWinner(board)).toBe("0");
+  });
+
+  test("diags test", () => {
+    let board = [
+      ["X", "0", "X"],
+      ["X", "X", "0"],
+      ["0", "0", "X"]
+    ];
+    expect(findWinner(board)).toBe("X");
+
+    board = [
+      ["X", "X", "0"],
+      [null, "0", null],
+      ["0", "X", null ]
+    ];
+    expect(findWinner(board)).toBe("0");
+  });
+
+  test("null test", () => {
+    let board = [
+      ["X", "X", "0"],
+      ["0", "0", "X"],
+      ["X", "0", "X"]
+    ];
+    expect(findWinner(board)).toBe(null);
+
+    board = [
+      ["0", "X", "0"],
+      [null, "0", null],
+      ["X", "X", null ]
+    ];
+    expect(findWinner(board)).toBe(null);
+  });
+
+  test("test weird cases", () => {
+    expect(findWinner(Array(3).fill(Array(3).fill(null)))).toBe(null);
   });
 });
